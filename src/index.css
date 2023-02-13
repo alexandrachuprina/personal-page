@@ -75,6 +75,10 @@ p {
   margin: 0
 }
 
+.p-medium {
+  font-family: 'ClashDisplay-Medium';
+}
+
 h1 {
   font-family: 'ClashDisplay-Bold';
 }

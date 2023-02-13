@@ -1,6 +1,40 @@
 import styled, { keyframes } from "styled-components";
+import { BasicButton } from "./styles/buttons/BasicButton";
 
 function App() {
+  // let app;
+  // let displacementSprite;
+  // let displacementFilter;
+
+  //   function initPixi() {
+  //     app = new PIXI.Application({width: window.innerWidth, height: window.innerHeight});
+  //     document.body.appendChild(app.view);
+
+  //     var image = new PIXI.Sprite.from("ph.jpg");
+  //     image.width = window.innerWidth;
+  //     image.height = window.innerHeight;
+  //     app.stage.addChild(image);
+
+  //     displacementSprite = new PIXI.Sprite.from("ph.jpg");
+  //     displacementFilter = new PIXI.filters.DisplacementFilter(displacementSprite);
+  //     displacementSprite.texture.baseTexture.wrapMode = PIXI.WRAP_MODES.REPEAT;
+  //     app.stage.addChild(displacementSprite);
+  //     app.stage.filters = [displacementFilter];
+
+  //     app.renderer.view.style.transform = 'scale(1.02)';
+  //     displacementSprite.scale.x = 4;
+  //     displacementSprite.scale.y = 4;
+  //     animate();
+  //   }
+
+  //   function animate() {
+  //     displacementSprite.x += 10;
+  //     displacementSprite.y += 4;
+  //     requestAnimationFrame(animate);
+  //   }
+
+  // initPixi();
+
   return (
     <Page>
       <section>
@@ -16,7 +50,7 @@ function App() {
         </Navbar>
 
         <About>
-          <button style={{ gridArea: 'cv' }}>Download CV</button>
+          <p style={{ gridArea: 'cv' }} className="p-medium">Download CV</p>
           <Intro style={{ gridArea: 'intro' }}>
             <h2>
               Hello! My name is Sasha. After 4 years of experience in architecture and design
@@ -25,6 +59,7 @@ function App() {
             </h2>
           </Intro>
           <HardSkills style={{ gridArea: 'hard' }}>
+            <span><p>Hard skills</p></span>
             <ul>
               <li><p>JavaScript, TypeScript, React, Redux ToolKit, React Router, Styled Components, SCSS/ SASS, Git</p></li>
               <li><p>VSCode</p></li>
@@ -33,20 +68,34 @@ function App() {
             </ul>
           </HardSkills>
           <SoftSkills style={{ gridArea: 'soft' }}>
-            <button>structural approach</button>
-            <p></p>
-            <button>attention to details</button>
-            <p></p>
-            <button>efficiency</button>
-            <p></p>
+            <span><p>Soft skills</p></span>
+            <div>
+              <BasicButton><p>reliability</p></BasicButton>
+              <BasicButton><p>self-discipline</p></BasicButton>
+              <BasicButton><p>communicativity</p></BasicButton>
+              <BasicButton><p>team player</p></BasicButton>
+              <BasicButton><p>responsibility</p></BasicButton>
+              <BasicButton><p>watchfulness</p></BasicButton>
+              <BasicButton><p>critical approach</p></BasicButton>
+              <p></p>
+            </div>
           </SoftSkills>
         </About>
       </section>
 
-      <section>
+      <Projects>
+        <SubHeader>
+          <h1>Pet-projects</h1>
+        </SubHeader>
         <WorksGallery>
+          <div style={{ gridArea: 'project1' }}></div>
+          <div style={{ gridArea: 'project2' }}></div>
+          <div style={{ gridArea: 'project3' }}></div>
+          <div style={{ gridArea: 'project4' }}></div>
+          <div style={{ gridArea: 'project5' }}></div>
+          <div style={{ gridArea: 'project6' }}></div>
         </WorksGallery>
-      </section>
+      </Projects>
 
     </Page >
   );
@@ -62,6 +111,8 @@ const Page = styled.div`
     display: flex;
     flex-direction: column;
     height: 100vh;
+    margin-bottom: 3vh;
+    border-bottom: 1px solid black;
 
     .div {
       display: block;
@@ -91,6 +142,10 @@ const Header = styled.div`
     text-transform: uppercase;
   }
 `
+const SubHeader = styled(Header)`
+  justify-content: flex-start;  
+  padding-left: 2vw;
+`
 const About = styled.div`
   display: grid;
   grid-template-columns: repeat(4, 23%);
@@ -100,7 +155,7 @@ const About = styled.div`
   box-sizing: border-box;
   grid-template-areas:
     'cv intro intro intro'
-    'hard soft . .';
+    'hard soft soft soft';
 
   margin-top: auto;
 `
@@ -116,12 +171,43 @@ const HardSkills = styled.div`
   li {
     margin-bottom: 1vw;
   }
+  span {
+  p {
+    margin-bottom: 1vw;
+  }
+ }
 `
 const SoftSkills = styled.div`
+  display: flex;
+  flex-direction: column;
+  span {
+    p {
+      margin-bottom: 1vw;
+    }
+  }
+  div {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+`
+const Projects = styled.div`
 `
 const WorksGallery = styled.div`
-  overflow: auto;
-  white-space: nowrap;
-  height: 30rem;
-  padding: 2rem 2rem 2rem 0;
+  display: grid;
+  grid-template-columns: repeat(4, 23%);
+  grid-template-rows: 23vw 23vw 23vw;
+  column-gap: 2vw;
+  row-gap: 2vw;
+  margin: 2vw;
+  box-sizing: border-box;
+  grid-template-areas:
+    'project1 project2 . project3'
+    '. . project5 .'
+    '. project6 . .';
+
+  div {
+    border: 1px solid black;
+  }
 `
+
