@@ -1,44 +1,30 @@
 import styled, { keyframes } from "styled-components";
 import { BasicButton } from "./styles/buttons/BasicButton";
+import { selectSoftSkills, toggleElement } from "./features/toggleSlice";
+import { useDispatch, useSelector } from "react-redux";
 
 function App() {
-  // let app;
-  // let displacementSprite;
-  // let displacementFilter;
 
-  //   function initPixi() {
-  //     app = new PIXI.Application({width: window.innerWidth, height: window.innerHeight});
-  //     document.body.appendChild(app.view);
-
-  //     var image = new PIXI.Sprite.from("ph.jpg");
-  //     image.width = window.innerWidth;
-  //     image.height = window.innerHeight;
-  //     app.stage.addChild(image);
-
-  //     displacementSprite = new PIXI.Sprite.from("ph.jpg");
-  //     displacementFilter = new PIXI.filters.DisplacementFilter(displacementSprite);
-  //     displacementSprite.texture.baseTexture.wrapMode = PIXI.WRAP_MODES.REPEAT;
-  //     app.stage.addChild(displacementSprite);
-  //     app.stage.filters = [displacementFilter];
-
-  //     app.renderer.view.style.transform = 'scale(1.02)';
-  //     displacementSprite.scale.x = 4;
-  //     displacementSprite.scale.y = 4;
-  //     animate();
-  //   }
-
-  //   function animate() {
-  //     displacementSprite.x += 10;
-  //     displacementSprite.y += 4;
-  //     requestAnimationFrame(animate);
-  //   }
-
-  // initPixi();
+  const dispatch = useDispatch();
+  const softSkills = useSelector(selectSoftSkills);
 
   return (
     <Page>
+
+      <video autoPlay loop muted style={{
+        height: `100vh`,
+        width: `100vw`,
+        padding: `none`,
+        position: `fixed`,
+        zIndex: `-1`,
+        color: `rgba(0,0,0,0.3)`,
+        filter: `blur(4)`,
+        }}>
+        <source src="" type='video/mp4' />
+      </video>
+
       <section>
-        <Header>
+        <Header >
           <h1>Frontend developer</h1>
         </Header>
         <Navbar>
@@ -69,16 +55,19 @@ function App() {
           </HardSkills>
           <SoftSkills style={{ gridArea: 'soft' }}>
             <span><p>Soft skills</p></span>
-            <div>
-              <BasicButton><p>reliability</p></BasicButton>
-              <BasicButton><p>self-discipline</p></BasicButton>
-              <BasicButton><p>communicativity</p></BasicButton>
-              <BasicButton><p>team player</p></BasicButton>
-              <BasicButton><p>responsibility</p></BasicButton>
-              <BasicButton><p>watchfulness</p></BasicButton>
-              <BasicButton><p>critical approach</p></BasicButton>
-              <p></p>
-            </div>
+            <ul>
+
+              {softSkills.map(elem => (
+                <li
+                  key={elem.id}
+                  onClick={() => dispatch(toggleElement(elem.id))}
+                >
+                  <BasicButton><p>{elem.shortText}</p></BasicButton>
+                  {elem.toggle ? <span><p>{elem.fullText}</p> </span> : null}
+                </li>
+              ))}
+
+            </ul>
           </SoftSkills>
         </About>
       </section>
@@ -97,6 +86,12 @@ function App() {
         </WorksGallery>
       </Projects>
 
+      <Contacts>
+        <SubHeader>
+          <h1>Contacts</h1>
+        </SubHeader>
+      </Contacts>
+
     </Page >
   );
 }
@@ -106,6 +101,8 @@ export default App;
 const Page = styled.div`
   display: flex;
   flex-direction: column;
+  padding: 0;
+  margin: 0;
 
   section {
     display: flex;
@@ -185,13 +182,16 @@ const SoftSkills = styled.div`
       margin-bottom: 1vw;
     }
   }
-  div {
+  ul {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
   }
+  
 `
 const Projects = styled.div`
+  margin-bottom: 3vh;
+  border-bottom: 1px solid black;
 `
 const WorksGallery = styled.div`
   display: grid;
@@ -209,5 +209,8 @@ const WorksGallery = styled.div`
   div {
     border: 1px solid black;
   }
+`
+const Contacts = styled.div`
+  height: 100vh;
 `
 

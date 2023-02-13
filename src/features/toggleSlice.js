@@ -7,12 +7,13 @@ const toggleSlice = createSlice({
   reducers: {
     toggleElement: (state, action) => {
       const id = action.payload;
-      const toggledElement = softSkills.filter(elem => elem.id === id);
+      const toggledElement = state.find(elem => elem.id === id);
       toggledElement.toggle = !toggledElement.toggle;
     }
   }
 })
 
+export const selectSoftSkills = (state) => state.toggle;
 export const { toggleElement } = toggleSlice.actions;
 
 export default toggleSlice.reducer;

@@ -24,5 +24,7 @@ export const BasicButton = styled.button`
   margin: 0 1vw 1vw 0;
 
   :hover {
+    color: white;
+    background-color: black;
   }
 `
