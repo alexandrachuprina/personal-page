@@ -23,8 +23,11 @@ export const BasicButton = styled.button`
   padding: 1vw 1.5vw 1vw 1.5vw;
   margin: 0 1vw 1vw 0;
 
+  transition-property: transform;
+  transition-duration: 300ms;
+
   :hover {
-    color: white;
-    background-color: black;
+    font-style: italic;
+    transform: translate(4px);
   }
 `

@@ -1,30 +1,46 @@
+import { useState, useRef, useEffect } from "react";
 import styled, { keyframes } from "styled-components";
 import { BasicButton } from "./styles/buttons/BasicButton";
 import { selectSoftSkills, toggleElement } from "./features/toggleSlice";
 import { useDispatch, useSelector } from "react-redux";
+import video from '/Users/lksndrchprn/personal-page/src/app/data/Pexels Videos 2334654.mp4'
 
 function App() {
+  const [scroll, setScroll] = useState(false);
+  let ref = useRef();
 
   const dispatch = useDispatch();
   const softSkills = useSelector(selectSoftSkills);
 
+  let videoStyle;
+  window.addEventListener('scroll', (event) => {
+    setScroll(true);
+  }
+  )
+
+  if (!scroll) {
+    videoStyle = {
+      position: `fixed`, zIndex: `-1`, backgroundColor: `white`, height: `100%`, filter: `blur(0px)`, opacity: '0.5'
+    }
+  } else {
+    videoStyle = {
+      position: `fixed`, zIndex: `-1`, backgroundColor: `white`, height: `100%`, filter: `blur(5px)`, opacity: '0.5',
+      transitionProperty: 'filter', transitionDuration: '1s'
+    }
+  }
+
   return (
     <Page>
 
-      <video autoPlay loop muted style={{
-        height: `100vh`,
-        width: `100vw`,
-        padding: `none`,
-        position: `fixed`,
-        zIndex: `-1`,
-        color: `rgba(0,0,0,0.3)`,
-        filter: `blur(4)`,
-        }}>
-        <source src="" type='video/mp4' />
-      </video>
+      <Video>
+        <video autoPlay loop muted style={videoStyle}>
+          <source src={video} type='video/mp4' />
+        </video>
+      </Video>
+
 
       <section>
-        <Header >
+        <Header>
           <h1>Frontend developer</h1>
         </Header>
         <Navbar>
@@ -116,6 +132,18 @@ const Page = styled.div`
       margin-top: auto;
     }
   }
+`
+const Blur = keyframes`
+to {
+  filter: blur(5px);
+}
+`
+const Video = styled.div`
+  /* background-color: red;  */
+  position: fixed;
+  height: 100vh;
+  z-index: -1;
+ 
 `
 const Navbar = styled.div`
   display: flex;
