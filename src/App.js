@@ -4,7 +4,6 @@ import { BasicButton } from "./styles/buttons/BasicButton";
 import { selectSoftSkills, toggleElement, scrolltoElement } from "./features/toggleSlice";
 import { useDispatch, useSelector } from "react-redux";
 import mount from '/Users/lksndrchprn/personal-page/src/app/data/Pexels Videos 2334654.mp4'
-import sky from '/Users/lksndrchprn/personal-page/src/app/data/Screen Recording 2023-02-14 at 18.10.38.mov'
 
 function App() {
   const dispatch = useDispatch();
