@@ -1,43 +1,67 @@
-import { useState, useRef, useEffect } from "react";
+import { useState, useAnimatedRef, useRef, useEffect } from "react";
 import styled, { keyframes } from "styled-components";
 import { BasicButton } from "./styles/buttons/BasicButton";
-import { selectSoftSkills, toggleElement } from "./features/toggleSlice";
+import { selectSoftSkills, toggleElement, scrolltoElement } from "./features/toggleSlice";
 import { useDispatch, useSelector } from "react-redux";
-import video from '/Users/lksndrchprn/personal-page/src/app/data/Pexels Videos 2334654.mp4'
+import mount from '/Users/lksndrchprn/personal-page/src/app/data/Pexels Videos 2334654.mp4'
+import sky from '/Users/lksndrchprn/personal-page/src/app/data/Screen Recording 2023-02-14 at 18.10.38.mov'
 
 function App() {
-  const [scroll, setScroll] = useState(false);
-  let ref = useRef();
-
   const dispatch = useDispatch();
   const softSkills = useSelector(selectSoftSkills);
 
-  let videoStyle;
-  window.addEventListener('scroll', (event) => {
-    setScroll(true);
-  }
-  )
+  const [scroll, setScroll] = useState(true);
+  const [url, setUrl] = useState(false)
 
-  if (!scroll) {
-    videoStyle = {
-      position: `fixed`, zIndex: `-1`, backgroundColor: `white`, height: `100%`, filter: `blur(0px)`, opacity: '0.5'
-    }
+
+  // Background dynamic blur
+  let video0;
+  let back;
+  if (scroll) {
+    video0 = {
+      zIndex: `-1`, backgroundColor: `white`, height: `100%`, filter: `blur(0px)`, opacity: '0.5',
+    };
+    back = {}
   } else {
-    videoStyle = {
-      position: `fixed`, zIndex: `-1`, backgroundColor: `white`, height: `100%`, filter: `blur(5px)`, opacity: '0.5',
-      transitionProperty: 'filter', transitionDuration: '1s'
+    video0 = {
+      zIndex: `-3`, backgroundColor: `white`, height: `100%`, filter: `blur(1px)`, opacity: '0.4',
+    };
+    // back = {
+    //   background: `rgb(255,255,255)`,
+    //   background: `linear-gradient(0deg, rgba(255,255,255,1) 0%, rgba(255,255,255,0.7721682422969187) 22%, rgba(255,255,255,0) 100%)`
+    // }
+  }
+  window.addEventListener('scroll', (event) => {
+    if (window.scrollY === 0) {
+      setScroll(true)
+    } else {
+      setScroll(false)
     }
+  })
+
+  // Soft skills styling
+  const grid = {
+    display: 'grid',
+    gridTemplateColumns: '20% 80%',
+  }
+
+  function handleMouse() {
+    setUrl(sky)
+  }
+  function handleMouse2() {
+    setTimeout(() => {
+      setUrl(mount)
+    }, 500)
   }
 
   return (
     <Page>
 
       <Video>
-        <video autoPlay loop muted style={videoStyle}>
-          <source src={video} type='video/mp4' />
+        <video autoPlay loop muted style={video0}>
+          <source src={mount} type='video/mp4' />
         </video>
       </Video>
-
 
       <section>
         <Header>
@@ -46,13 +70,12 @@ function App() {
         <Navbar>
           <p>works</p>
           <p>github</p>
-          <p>about</p>
+          <p>cv</p>
           <p>timezone: GMT+6</p>
           <p>contacts</p>
         </Navbar>
 
-        <About>
-          <p style={{ gridArea: 'cv' }} className="p-medium">Download CV</p>
+        <About style={back}>
           <Intro style={{ gridArea: 'intro' }}>
             <h2>
               Hello! My name is Sasha. After 4 years of experience in architecture and design
@@ -60,53 +83,102 @@ function App() {
               It gives me opportunity both in logical processes and design.
             </h2>
           </Intro>
-          <HardSkills style={{ gridArea: 'hard' }}>
-            <span><p>Hard skills</p></span>
-            <ul>
-              <li><p>JavaScript, TypeScript, React, Redux ToolKit, React Router, Styled Components, SCSS/ SASS, Git</p></li>
-              <li><p>VSCode</p></li>
-              <li><p>JUX/ UI, Figma, Adobe Suit</p></li>
-              <li><p>Russian native, English B2</p></li>
-            </ul>
-          </HardSkills>
-          <SoftSkills style={{ gridArea: 'soft' }}>
-            <span><p>Soft skills</p></span>
-            <ul>
-
-              {softSkills.map(elem => (
-                <li
-                  key={elem.id}
-                  onClick={() => dispatch(toggleElement(elem.id))}
-                >
-                  <BasicButton><p>{elem.shortText}</p></BasicButton>
-                  {elem.toggle ? <span><p>{elem.fullText}</p> </span> : null}
-                </li>
-              ))}
-
-            </ul>
-          </SoftSkills>
         </About>
       </section>
 
-      <Projects>
-        <SubHeader>
-          <h1>Pet-projects</h1>
-        </SubHeader>
-        <WorksGallery>
-          <div style={{ gridArea: 'project1' }}></div>
-          <div style={{ gridArea: 'project2' }}></div>
-          <div style={{ gridArea: 'project3' }}></div>
-          <div style={{ gridArea: 'project4' }}></div>
-          <div style={{ gridArea: 'project5' }}></div>
-          <div style={{ gridArea: 'project6' }}></div>
-        </WorksGallery>
-      </Projects>
+      <WorksGallery>
+        <SubHeader style={{ gridArea: 'headhard' }}><p>Hard skills</p></SubHeader>
 
-      <Contacts>
-        <SubHeader>
-          <h1>Contacts</h1>
-        </SubHeader>
-      </Contacts>
+        <HardSkills style={{ gridArea: 'hard' }}>
+          <ul>
+            <li><p>JavaScript, TypeScript, React, Git</p></li>
+            <li><p>Redux ToolKit, React Router, React Query</p></li>
+            <li><p>Styled Components, SCSS/ SASS</p></li>
+            <li><p>experience with REST API and Docker</p></li>
+            <li><p>UX/ UI, Figma, Adobe Suit</p></li>
+          </ul>
+        </HardSkills>
+
+        {/* <p style={{ gridArea: 'headsoft' }}>Soft skills</p> */}
+        {/* <SoftSkills style={{ gridArea: 'soft' }}>
+          <ul>
+            {softSkills.map(elem => (
+              <li
+                key={elem.id}
+                onClick={() => dispatch(toggleElement(elem.id))}
+              >
+                {elem.toggle ?
+                  <div style={grid}>
+                    <BasicButton><p>{elem.shortText}</p></BasicButton>
+                    <p className="fulltext">{elem.fullText}</p>
+                  </div>
+                  :
+                  <div><BasicButton><p>{elem.shortText}</p></BasicButton></div>
+                }
+              </li>
+            ))}
+          </ul>
+        </SoftSkills> */}
+
+        <SubHeaderLast style={{ gridArea: 'headprojects' }}><p>Pet-projects</p></SubHeaderLast>
+
+        <div className="overflow" style={{ gridArea: 'o' }}>
+
+          <DescriptionFirst style={{ gridArea: 'a' }} onMouseEnter={() => handleMouse()} onMouseLeave={handleMouse2}>
+            <span>
+              <p className="p-medium">Stopwatch + dynamic timeline</p>
+              <p>watch live</p>
+            </span>
+            <p>customizable interface with custom hooks</p>
+            <p style={{ marginTop: 'auto' }}>GitHub</p>
+
+          </DescriptionFirst>
+
+          {/* <Project style={{ gridArea: 'c' }}>
+          <video autoPlay loop muted src={sky} type='video/mp4' />
+        </Project> */}
+
+          <Description style={{ gridArea: 'b' }}>
+            <span>
+              <p className="p-medium">Weather broadcast</p>
+              <p>watch live</p>
+            </span>
+            <p>work with REST API using fetch API</p>
+            <a style={{ marginTop: 'auto' }} href="https://github.com/alexandrachuprina/basic-weather-app" target="_blank"><p>GitHub</p></a>
+          </Description>
+
+          <Description style={{ gridArea: 'b' }}>
+            <span>
+              <p className="p-medium">News getter</p>
+              <p>watch live</p>
+            </span>
+            <p>work with REST API using React Query</p>
+            <a style={{ marginTop: 'auto' }} href="https://github.com/alexandrachuprina/react-query-app" target="_blank"><p>GitHub</p></a>
+          </Description>
+
+          <Description style={{ gridArea: 'b' }}>
+            <span>
+              <p className="p-medium">Sign up form</p>
+              <p>watch live</p>
+            </span>
+            <p>validation with RegEx</p>
+            <p style={{ marginTop: 'auto' }}>GitHub</p>
+          </Description>
+         
+        </div>
+      </WorksGallery>
+
+      <section style={{ height: '10vh' }}>
+        <About>
+          <p style={{ gridArea: 'video', paddingLeft: '2vw' }}>Video: <a href="https://www.pexels.com/@tobiasbjorkli/">Tobias Bjørkli</a></p>
+          <Intro style={{ gridArea: 'intro', display: 'flex', flexDirection: 'row' }}>
+            <BasicButton><h2>CV</h2></BasicButton>
+            <BasicButton><h2>GitHub</h2></BasicButton>
+            <BasicButton><h2>Telegram</h2></BasicButton>
+            <BasicButton><h2>shplvk@gmail.com</h2></BasicButton>
+          </Intro>
+        </About>
+      </section>
 
     </Page >
   );
@@ -124,26 +196,14 @@ const Page = styled.div`
     display: flex;
     flex-direction: column;
     height: 100vh;
-    margin-bottom: 3vh;
-    border-bottom: 1px solid black;
+    margin-bottom: 1vh;
 
-    .div {
-      display: block;
-      margin-top: auto;
-    }
   }
 `
-const Blur = keyframes`
-to {
-  filter: blur(5px);
-}
-`
 const Video = styled.div`
-  /* background-color: red;  */
   position: fixed;
   height: 100vh;
   z-index: -1;
- 
 `
 const Navbar = styled.div`
   display: flex;
@@ -167,20 +227,32 @@ const Header = styled.div`
     text-transform: uppercase;
   }
 `
-const SubHeader = styled(Header)`
-  justify-content: flex-start;  
-  padding-left: 2vw;
+const SubHeader = styled.div`
+  border-top: 1px solid black;
+  border-bottom: 1px solid black;
+  padding: 1vw;
+  :hover {
+    p {
+      font-style: italic;
+    }
+  }
+`
+const SubHeaderLast = styled(SubHeader)`
+  border-bottom: none;
+  border-top: none;
+  :hover {
+    p {
+      font-style: italic;
+    }
+  }
 `
 const About = styled.div`
   display: grid;
-  grid-template-columns: repeat(4, 23%);
-  column-gap: 2vw;
-  row-gap: 2vw;
-  margin: 0vw 2vw 0 2vw;
+  grid-template-columns: repeat(4, 25%) ;
+  padding: 0vw 2vw 0 2vw;
   box-sizing: border-box;
   grid-template-areas:
-    'cv intro intro intro'
-    'hard soft soft soft';
+    'video intro intro intro ';
 
   margin-top: auto;
 `
@@ -188,6 +260,13 @@ const Intro = styled.div`
   
 `
 const HardSkills = styled.div`
+  border-top: 1px solid black;
+  border-left: 1px solid black;
+  border-bottom: 1px solid black;
+
+  height: 16vw;
+  padding: 1vw;
+
   ul {
     list-style: none;
     margin: none;
@@ -196,11 +275,11 @@ const HardSkills = styled.div`
   li {
     margin-bottom: 1vw;
   }
-  span {
-  p {
-    margin-bottom: 1vw;
+  :hover {
+    p {
+      font-style: italic;
+    }
   }
- }
 `
 const SoftSkills = styled.div`
   display: flex;
@@ -214,29 +293,91 @@ const SoftSkills = styled.div`
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
+
+    .fulltext {
+      margin-bottom: 1vw;
+    }
   }
   
 `
-const Projects = styled.div`
-  margin-bottom: 3vh;
-  border-bottom: 1px solid black;
-`
 const WorksGallery = styled.div`
   display: grid;
-  grid-template-columns: repeat(4, 23%);
-  grid-template-rows: 23vw 23vw 23vw;
-  column-gap: 2vw;
-  row-gap: 2vw;
+  grid-template-columns: repeat(4, 25%);
   margin: 2vw;
-  box-sizing: border-box;
+  /* box-sizing: border-box; */
   grid-template-areas:
-    'project1 project2 . project3'
-    '. . project5 .'
-    '. project6 . .';
+    'headhard hard hard hard'
+    'headsoft soft soft soft'
+    'headprojects o o o'
+    '. o o o';
 
-  div {
-    border: 1px solid black;
+  border-left: 1px solid black;
+  border-right: 1px solid black;
+  border-bottom: 1px solid black;
+
+  .overflow {
+    width: 100%;
+    height: 46vw;
+    overflow-y: scroll;
+    z-index: 2;
   }
+`
+const Description = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 1vw;
+
+  height: 20vw;
+
+  border-top: 1px solid black;
+  border-left: 1px solid black;
+
+  span {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+  :hover {
+    p {
+      font-style: italic;
+    }
+  }
+`
+const DescriptionFirst = styled(Description)`
+  border-top: none;
+`
+const Project = styled.div`
+  position: relative;
+  height: 23vw;
+  border-top: 1px solid black;
+  border-left: 1px solid black;
+
+  video {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+
+    opacity: 1;
+    z-index: -1;
+    /* filter: blur(5px); */
+  }
+
+  p {
+    padding: 0.5vw 0 0.5vw 2vw;
+  }
+  p:hover {
+    font-style: italic;
+  }
+  
+  &:hover {
+    p {
+      /* transition-property: margin-left;
+      transition-duration: 500ms;
+      margin-left: 3vw; */
+    }
+  }
+
 `
 const Contacts = styled.div`
   height: 100vh;

@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const BasicButton = styled.button`
   margin: 0;
-  border: 1px solid black;
+  border: 2px solid black;
   background-color: transparent;
   border-radius: 30px;
   color: black;
@@ -18,16 +18,22 @@ export const BasicButton = styled.button`
   touch-action: manipulation;
   vertical-align: middle;
 
-  height: 2vw;
+  height: 3vw;
   /* width: 15vw; */
   padding: 1vw 1.5vw 1vw 1.5vw;
   margin: 0 1vw 1vw 0;
 
-  transition-property: transform;
+  /* transition-property: transform;
   transition-duration: 300ms;
 
   :hover {
     font-style: italic;
     transform: translate(4px);
+  } */
+  :hover {
+    background-color: black;
+    h2 {
+      color: white;
+    }
   }
 `

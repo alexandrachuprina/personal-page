@@ -84,9 +84,11 @@ h1 {
   font-family: 'ClashDisplay-Bold';
 }
 h2 {
+  font-size: 2rem;
   font-family: 'ClashDisplay-Medium';
 }
 p {
+  font-size: 1.5rem;
   font-family: 'ClashDisplay-Regular';
 }
 
@@ -94,4 +96,12 @@ ul {
   list-style: none;
   margin: 0;
   padding: 0;
+}
+
+a {
+  color: black;
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: underline;
 }
