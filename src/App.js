@@ -44,14 +44,14 @@ function App() {
     gridTemplateColumns: '20% 80%',
   }
 
-  function handleMouse() {
-    setUrl(sky)
-  }
-  function handleMouse2() {
-    setTimeout(() => {
-      setUrl(mount)
-    }, 500)
-  }
+  // function handleMouse() {
+  //   setUrl(sky)
+  // }
+  // function handleMouse2() {
+  //   setTimeout(() => {
+  //     setUrl(mount)
+  //   }, 500)
+  // }
 
   return (
     <Page>
@@ -123,9 +123,9 @@ function App() {
 
         <div className="overflow" style={{ gridArea: 'o' }}>
 
-          <DescriptionFirst style={{ gridArea: 'a' }} onMouseEnter={() => handleMouse()} onMouseLeave={handleMouse2}>
+          <DescriptionFirst style={{ gridArea: 'a' }}>
             <span>
-              <p className="p-medium">Stopwatch + dynamic timeline</p>
+              <p className="p-medium">Stopwatch + dynamic timeline + to-do list</p>
               <p>watch live</p>
             </span>
             <p>customizable interface with custom hooks</p>
@@ -163,7 +163,7 @@ function App() {
             <p>validation with RegEx</p>
             <p style={{ marginTop: 'auto' }}>GitHub</p>
           </Description>
-         
+
         </div>
       </WorksGallery>
 
@@ -314,12 +314,12 @@ const WorksGallery = styled.div`
   border-right: 1px solid black;
   border-bottom: 1px solid black;
 
-  .overflow {
+  /* .overflow {
     width: 100%;
     height: 46vw;
     overflow-y: scroll;
     z-index: 2;
-  }
+  } */
 `
 const Description = styled.div`
   display: flex;
