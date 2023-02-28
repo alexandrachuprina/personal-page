@@ -9,16 +9,23 @@ import { ContactsButton } from '../styles/buttons/ContactsButton';
 import { selectSoftSkills, toggleElement, scrolltoElement } from "../features/toggleSlice";
 import { sizes } from '../styles/abstracts/breakpoints';
 
-import video from '../app/data/background.mp4'
+import video from '../app/data/background.mp4';
+import { softSkills } from '../app/data/softSkills';
 
 export default function Home() {
-  const dispatch = useDispatch();
-  const softSkills = useSelector(selectSoftSkills);
+  // const dispatch = useDispatch();
+  // const softSkills = useSelector(selectSoftSkills);
   const [scroll, setScroll] = useState(true);
   const [isCopied, setIsCopied] = useState(false);
   const [text, setText] = useState('nope')
   const worksRef = useRef();
   const contactsRef = useRef();
+
+  // To set text
+  function handleSetText(id) {
+    const toggledElement = softSkills.find(elem => elem.id === id);
+    setText(toggledElement.fullText)
+  }
 
   // Copy email on click
   const copy = async () => {
@@ -113,14 +120,8 @@ export default function Home() {
             {softSkills.map(elem => (
               <li
                 key={elem.id}
-                onClick={() => dispatch(toggleElement(elem.id))}
               >
-                <div><BasicButton><p>{elem.shortText}</p></BasicButton></div>
-
-                {elem.toggle ?
-                    setText(elem.fullText)
-                  :
-                  null}
+                <BasicButton onClick={() => handleSetText(elem.id)}><p>{elem.shortText}</p></BasicButton>
               </li>
             ))}
           </ul>
