@@ -1,7 +1,7 @@
 import styled from "styled-components";
+import { sizes } from "../abstracts/breakpoints";
 
 export const BasicButton = styled.button`
-  margin: 0;
   border: 2px solid black;
   background-color: transparent;
   border-radius: 30px;
@@ -19,17 +19,9 @@ export const BasicButton = styled.button`
   vertical-align: middle;
 
   height: 3vw;
-  /* width: 15vw; */
   padding: 1vw 1.5vw 1vw 1.5vw;
   margin: 0 1vw 1vw 0;
 
-  /* transition-property: transform;
-  transition-duration: 300ms;
-
-  :hover {
-    font-style: italic;
-    transform: translate(4px);
-  } */
   :hover {
     background-color: black;
     h2 {
@@ -37,6 +29,25 @@ export const BasicButton = styled.button`
     }
     p {
       color: white;
+    }
+  }
+
+  @media (min-width: ${sizes.xs}) and (max-width: ${sizes.s}) {
+    height: 2vw;
+    h2 {
+      font-size: 1rem;
+    }
+  }
+  @media (min-width: ${sizes.s}) and (max-width: ${sizes.m}) {
+    height: 2vw;
+    h2 {
+      font-size: 1rem;
+    }
+  }
+  @media (min-width: ${sizes.m}) and (max-width: ${sizes.l}) {
+    height: 3vw;
+    h2 {
+      font-size: 1rem;
     }
   }
 `

@@ -1,10 +1,13 @@
 import React from 'react';
 import { Link } from "react-router-dom";
-import { useState, useAnimatedRef, useRef, useEffect } from "react";
+import { useState, useRef } from "react";
+import { useDispatch, useSelector } from "react-redux";
+
 import styled, { keyframes } from "styled-components";
 import { BasicButton } from "../styles/buttons/BasicButton";
 import { selectSoftSkills, toggleElement, scrolltoElement } from "../features/toggleSlice";
-import { useDispatch, useSelector } from "react-redux";
+import { sizes } from '../styles/abstracts/breakpoints';
+
 import mount from '/Users/lksndrchprn/personal-page/src/app/data/Pexels Videos 2334654.mp4'
 
 export default function Home() {
@@ -58,11 +61,11 @@ export default function Home() {
   return (
     <Page>
 
-      <Video>
+      {/* <Video>
         <video autoPlay loop muted style={video0}>
           <source src={mount} type='video/mp4' />
         </video>
-      </Video>
+      </Video> */}
 
       <section>
         <Header>
@@ -133,7 +136,7 @@ export default function Home() {
               <p className="p-medium">Stopwatch + dynamic timeline + to-do list</p>
               <p>watch live</p>
             </span>
-            <p>customizable interface with custom hooks</p>
+            <p>customizable interfacem, custom hooks</p>
             <p style={{ marginTop: 'auto' }}>GitHub</p>
 
           </DescriptionFirst>
@@ -183,14 +186,14 @@ export default function Home() {
 
       <Footer>
         <AboutInFooter ref={contactsRef}>
-          <p style={{ gridArea: 'video', paddingLeft: '2vw' }}>Video: <a href="https://www.pexels.com/@tobiasbjorkli/">Tobias Bjørkli</a></p>
+          {/* <p style={{ gridArea: 'video', paddingLeft: '2vw' }}>Video: <a href="https://www.pexels.com/@tobiasbjorkli/">Tobias Bjørkli</a></p>
           <Intro style={{ gridArea: 'intro', display: 'flex', flexDirection: 'row' }}>
             <BasicButton><Link to='cv'><h2>CV</h2></Link></BasicButton>
             <BasicButton><a href="https://github.com/alexandrachuprina?tab=repositories" target='_blank'><h2>GitHub</h2></a></BasicButton>
             <BasicButton><a href="https://t.me/alexandrachuprina" target='_blank'><h2>Telegram</h2></a></BasicButton>
             <BasicButton onClick={copy}><h2>shplvk@gmail.com</h2></BasicButton>
             {isCopied ? <Alert><p>Copied!</p></Alert> : null}
-          </Intro>
+          </Intro> */}
         </AboutInFooter>
       </Footer>
 
@@ -204,6 +207,8 @@ export default function Home() {
 const Page = styled.div`
   display: flex;
   flex-direction: column;
+  width: 100vw;
+  box-sizing: border-box;
   padding: 0;
   margin: 0;
 
@@ -213,10 +218,68 @@ const Page = styled.div`
     height: fit-content;
     margin-bottom: 1vh;
   }
+
+  @media (min-width: ${sizes.smallest}) and (max-width: ${sizes.micro}) {
+    h2 {
+      font-size: 0.9rem;
+    }
+    p {
+      font-size: 0.4rem;
+    }
+  }
+  @media (min-width: ${sizes.micro}) and (max-width: ${sizes.mini}) {
+    h2 {
+      font-size: 1rem;
+    }
+    p {
+      font-size: 0.6rem;
+    }
+  }
+  @media (min-width: ${sizes.mini}) and (max-width: ${sizes.xxs}) {
+    h2 {
+      font-size: 1.1rem;
+    }
+    p {
+      font-size: 0.7rem;
+    }
+  }
+  @media (min-width: ${sizes.xxs}) and (max-width: ${sizes.xs}) {
+    h2 {
+      font-size: 1.2rem;
+    }
+    p {
+      font-size: 0.8rem;
+    }
+  }
+  @media (min-width: ${sizes.xs}) and (max-width: ${sizes.s}) {
+    h2 {
+      font-size: 1.5rem;
+    }
+    p {
+      font-size: 1rem;
+    }
+  }
+  @media (min-width: ${sizes.s}) and (max-width: ${sizes.m}) {
+    h2 {
+      font-size: 1.8rem;
+    }
+    p {
+      font-size: 1.3rem;
+    }
+  }
+  @media (min-width: ${sizes.m}) and (max-width: ${sizes.l}) {
+    h2 {
+      font-size: 2rem;
+    }
+    p {
+      font-size: 1.5rem;
+    }
+  }
 `
 const Video = styled.div`
   position: fixed;
-  height: 100vh;
+  width: 100vw;
+  height: 100%;
   z-index: -1;
 `
 const Alert = styled.div`
@@ -280,13 +343,47 @@ const About = styled.div`
   /* margin-top: auto; */
 `
 const Intro = styled.div` 
+  h2 {
+    font-size: 4.2vh;
+  }
+
+  @media (min-width: ${sizes.smallest}) and (max-width: ${sizes.micro}) {
+    h2 {
+      font-size: 1.4vh;
+    }
+  }
+  @media (min-width: ${sizes.micro}) and (max-width: ${sizes.mini}) {
+    h2 {
+      font-size: 1.6vh;
+    }
+  }
+  @media (min-width: ${sizes.mini}) and (max-width: ${sizes.xxs}) {
+    h2 {
+      font-size: 2vh;
+    }
+  }
+  @media (min-width: ${sizes.xxs}) and (max-width: ${sizes.xs}) {
+    h2 {
+      font-size: 2.4vh;
+    }
+  }
+  @media (min-width: ${sizes.xs}) and (max-width: ${sizes.s}) {
+    h2 {
+      font-size: 3.2vh;
+    }
+  }
+  @media (min-width: ${sizes.s}) and (max-width: ${sizes.m}) {
+    h2 {
+      font-size: 4vh;
+    }
+  }
 `
 const HardSkills = styled.div`
   border-top: 1px solid black;
   border-left: 1px solid black;
   border-bottom: 1px solid black;
 
-  height: 16vw;
+  height: 18vw;
   padding: 1vw;
 
   ul {
@@ -301,6 +398,28 @@ const HardSkills = styled.div`
     p {
       font-style: italic;
     }
+  }
+
+  @media (min-width: ${sizes.smallest}) and (max-width: ${sizes.micro}) {
+    height: 25vw;
+  }
+  @media (min-width: ${sizes.micro}) and (max-width: ${sizes.mini}) {
+    height: 25vw;
+  }
+  @media (min-width: ${sizes.mini}) and (max-width: ${sizes.xxs}) {
+    height: 25vw;
+  }
+  @media (min-width: ${sizes.xxs}) and (max-width: ${sizes.xs}) {
+    height: 25vw;
+  }
+  @media (min-width: ${sizes.xs}) and (max-width: ${sizes.s}) {
+    height: 25vw;
+  }
+  @media (min-width: ${sizes.s}) and (max-width: ${sizes.m}) {
+    height: 22vw;
+  }
+  @media (min-width: ${sizes.m}) and (max-width: ${sizes.l}) {
+    height: 20vw;
   }
 `
 const SoftSkills = styled.div`
