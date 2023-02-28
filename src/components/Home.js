@@ -134,7 +134,7 @@ export default function Home() {
               <p>watch live</p>
             </span>
             <p>customizable interfacem, custom hooks</p>
-            <p style={{ marginTop: 'auto' }}>GitHub</p>
+            <a style={{ marginTop: 'auto' }} href="https://github.com/alexandrachuprina/timer-app" target="_blank"><p>GitHub</p></a>
           </DescriptionFirst>
 
           <Description style={{ gridArea: 'b' }}>
@@ -143,7 +143,7 @@ export default function Home() {
               <p>watch live</p>
             </span>
             <p>work with REST API using fetch API</p>
-            <a style={{ marginTop: 'auto' }} href="" target="_blank"><p>GitHub</p></a>
+            <a style={{ marginTop: 'auto' }} href="https://github.com/alexandrachuprina/basic-weather-app" target="_blank"><p>GitHub</p></a>
           </Description>
 
           <Description style={{ gridArea: 'b' }}>
@@ -152,7 +152,7 @@ export default function Home() {
               <p>watch live</p>
             </span>
             <p>work with REST API using React Query</p>
-            <a style={{ marginTop: 'auto' }} href="" target="_blank"><p>GitHub</p></a>
+            <a style={{ marginTop: 'auto' }} href="https://github.com/alexandrachuprina/react-query-app" target="_blank"><p>GitHub</p></a>
           </Description>
 
           <Description style={{ gridArea: 'b' }}>
@@ -161,16 +161,16 @@ export default function Home() {
               <p>watch live</p>
             </span>
             <p>validation with RegEx</p>
-            <p style={{ marginTop: 'auto' }}>GitHub</p>
+            <a style={{ marginTop: 'auto' }} href="https://github.com/alexandrachuprina/login-app" target="_blank"><p>GitHub</p></a>
           </Description>
 
           <Description style={{ gridArea: 'b' }}>
             <span>
-              <p className="p-medium">Personal page (current)</p>
+              <p className="p-medium">Personal page</p>
               <p>watch live</p>
             </span>
             <p>Redux, React Router</p>
-            <a style={{ marginTop: 'auto' }} href="" target="_blank"><p>GitHub</p></a>
+            <a style={{ marginTop: 'auto' }} href="https://github.com/alexandrachuprina/personal-page" target="_blank"><p>GitHub</p></a>
           </Description>
 
         </div>
