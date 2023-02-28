@@ -10,11 +10,10 @@ const toggleSlice = createSlice({
       const toggledElement = state.find(elem => elem.id === id);
       toggledElement.toggle = !toggledElement.toggle;
 
-      // add parametrs
-      if (window.scrollY < 510) {
+      if (window.scrollY < 1780) {
         if (toggledElement.toggle === true) {
           setTimeout(() => {
-            window.scrollBy({ top: 100, behavior: 'smooth' });
+            window.scrollBy({ top: 180, behavior: 'smooth' });
           }, 100)
         }
       }

@@ -35,5 +35,8 @@ export const BasicButton = styled.button`
     h2 {
       color: white;
     }
+    p {
+      color: white;
+    }
   }
 `
