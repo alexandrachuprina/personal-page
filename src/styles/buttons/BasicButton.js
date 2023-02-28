@@ -2,7 +2,7 @@ import styled from "styled-components";
 import { sizes } from "../abstracts/breakpoints";
 
 export const BasicButton = styled.button`
-  border: 2px solid black;
+  border: 1px solid black;
   background-color: transparent;
   border-radius: 30px;
   color: black;
@@ -37,21 +37,18 @@ export const BasicButton = styled.button`
     h2 {
       font-size: 1rem;
     }
-    border: 1px solid black;
   }
   @media (min-width: ${sizes.xxs}) and (max-width: ${sizes.xs}) {
     height: 3vw;
     h2 {
       font-size: 1rem;
     }
-    border: 1px solid black;
   }
   @media (min-width: ${sizes.xs}) and (max-width: ${sizes.s}) {
     height: 3vw;
     h2 {
       font-size: 1rem;
     }
-    border: 1px solid black;
   }
   @media (min-width: ${sizes.s}) and (max-width: ${sizes.m}) {
     height: 3vw;

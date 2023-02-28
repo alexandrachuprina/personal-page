@@ -16,6 +16,7 @@ export default function Home() {
   const softSkills = useSelector(selectSoftSkills);
   const [scroll, setScroll] = useState(true);
   const [isCopied, setIsCopied] = useState(false);
+  const [text, setText] = useState('nope')
   const worksRef = useRef();
   const contactsRef = useRef();
 
@@ -88,28 +89,8 @@ export default function Home() {
               It gives me opportunity both in logical processes and design.
             </h2>
           </Intro>
-
-          <SoftSkills style={{ gridArea: 'soft' }}>
-            <ul>
-              {softSkills.map(elem => (
-                <li
-                  key={elem.id}
-                  onClick={() => { dispatch(toggleElement(elem.id)); console.log(window.scrollY) }}
-                >
-                  {elem.toggle ?
-                    <Grid>
-                      <BasicButton><p>{elem.shortText}</p></BasicButton>
-                      <p className="fulltext">{elem.fullText}</p>
-                    </Grid>
-                    :
-                    <div><BasicButton><p>{elem.shortText}</p></BasicButton></div>
-                  }
-                </li>
-              ))}
-            </ul>
-          </SoftSkills>
-
         </About>
+
       </section>
 
       <WorksGallery>
@@ -124,6 +105,27 @@ export default function Home() {
             <li><p>UX/ UI, Figma, Adobe Suit</p></li>
           </ul>
         </HardSkills>
+
+        <SubHeaderMiddle style={{ gridArea: 'headsoft' }}><p>Soft skills</p></SubHeaderMiddle>
+
+        <SoftSkills style={{ gridArea: 'soft' }}>
+          <ul>
+            {softSkills.map(elem => (
+              <li
+                key={elem.id}
+                onClick={() => dispatch(toggleElement(elem.id))}
+              >
+                <div><BasicButton><p>{elem.shortText}</p></BasicButton></div>
+
+                {elem.toggle ?
+                    setText(elem.fullText)
+                  :
+                  null}
+              </li>
+            ))}
+          </ul>
+          <p>{text}</p>
+        </SoftSkills>
 
         <SubHeaderLast style={{ gridArea: 'headprojects' }} ref={worksRef}><p>Pet-projects</p></SubHeaderLast>
 
@@ -204,7 +206,7 @@ const Page = styled.div`
   section {
     display: flex;
     flex-direction: column;
-    height: fit-content;
+    height: 100vh;
     margin-bottom: 1vh;
   }
 
@@ -315,6 +317,9 @@ const SubHeader = styled.div`
     }
   }
 `
+const SubHeaderMiddle = styled(SubHeader)`
+  border-top: none;
+`
 const SubHeaderLast = styled(SubHeader)`
   border-bottom: none;
   border-top: none;
@@ -327,12 +332,13 @@ const SubHeaderLast = styled(SubHeader)`
 const About = styled.div`
   display: grid;
   grid-template-columns: repeat(4, 25%) ;
-  padding: 20vw 2vw 2vw 2vw;
+  padding: 2vw;
   box-sizing: border-box;
   grid-template-areas:
     'video intro intro intro '
-    '. soft soft soft'
     ;
+
+  margin-top: auto;
 `
 const Intro = styled.div` 
   display: flex;
@@ -420,7 +426,9 @@ const HardSkills = styled.div`
 const SoftSkills = styled.div`
   display: flex;
   flex-direction: column;
-  padding-top: 2vw;
+  padding: 2vw;
+  border-bottom: 1px solid black;
+  border-left: 1px solid black;
   span {
     p {
       margin-bottom: 1vw;
@@ -440,9 +448,8 @@ const SoftSkills = styled.div`
   }
   
 `
-const Grid = styled.div`
-  display: grid;
-  grid-template-columns: 30% 70%;
+const Text = styled.div`
+  
 `
 const WorksGallery = styled.div`
   display: grid;

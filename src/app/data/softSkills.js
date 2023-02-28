@@ -38,25 +38,11 @@ export const softSkills = [
     ref: `ref4`,
   },
   {
-    id: 5,
-    shortText: 'adaptability',
-    fullText: 'Front-end developers often work closely with graphic designers and UI/UX designers. The developer must be able to communicate clearly and translate the designers requests into code.',
-    toggle: false,
-    ref: `ref5`,
-  },
-  {
     id: 6,
     shortText: 'open mind',
     fullText: 'The structural approach is based on the assumption that language teaching can best be done through systematic selection and grading of structures or sentence patterns. It was widely implemented in the United States in the 1950s. The basic principle underlying the approach is: Language is speech, not writing.',
     toggle: false,
     ref: `ref6`,
-  },
-  {
-    id: 7,
-    shortText: 'watchfulness',
-    fullText: 'Things can change quickly when you are building a website or an app. Developers must be able to take in the changes and adjust their workload accordingly.',
-    toggle: false,
-    ref: `ref7`,
   },
   {
     id: 8,
