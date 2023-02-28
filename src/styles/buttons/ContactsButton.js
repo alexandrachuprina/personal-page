@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { sizes } from "../abstracts/breakpoints";
 
-export const BasicButton = styled.button`
+export const ContactsButton = styled.button`
   border: 2px solid black;
   background-color: transparent;
   border-radius: 30px;
@@ -18,7 +18,7 @@ export const BasicButton = styled.button`
   touch-action: manipulation;
   vertical-align: middle;
 
-  height: 3vw;
+  height: 4vw;
   padding: 1vw 1.5vw 1vw 1.5vw;
   margin: 0 1vw 1vw 0;
 
@@ -34,35 +34,20 @@ export const BasicButton = styled.button`
 
   @media (min-width: ${sizes.smallest}) and (max-width: ${sizes.xxs}) {
     height: 4vw;
-    h2 {
-      font-size: 1rem;
-    }
     border: 1px solid black;
   }
   @media (min-width: ${sizes.xxs}) and (max-width: ${sizes.xs}) {
-    height: 3vw;
-    h2 {
-      font-size: 1rem;
-    }
+    height: 4vw;
     border: 1px solid black;
   }
   @media (min-width: ${sizes.xs}) and (max-width: ${sizes.s}) {
-    height: 3vw;
-    h2 {
-      font-size: 1rem;
-    }
+    height: 4vw;
     border: 1px solid black;
   }
   @media (min-width: ${sizes.s}) and (max-width: ${sizes.m}) {
-    height: 3vw;
-    h2 {
-      font-size: 1rem;
-    }
+    height: 4vw;
   }
   @media (min-width: ${sizes.m}) and (max-width: ${sizes.l}) {
-    height: 3vw;
-    h2 {
-      font-size: 1rem;
-    }
+    height: 4vw;
   }
 `

@@ -5,20 +5,21 @@ import { useDispatch, useSelector } from "react-redux";
 
 import styled, { keyframes } from "styled-components";
 import { BasicButton } from "../styles/buttons/BasicButton";
+import { ContactsButton } from '../styles/buttons/ContactsButton';
 import { selectSoftSkills, toggleElement, scrolltoElement } from "../features/toggleSlice";
 import { sizes } from '../styles/abstracts/breakpoints';
 
-import mount from '/Users/lksndrchprn/personal-page/src/app/data/Pexels Videos 2334654.mp4'
+import video from '../app/data/background.mp4'
 
 export default function Home() {
   const dispatch = useDispatch();
   const softSkills = useSelector(selectSoftSkills);
   const [scroll, setScroll] = useState(true);
   const [isCopied, setIsCopied] = useState(false);
-
   const worksRef = useRef();
   const contactsRef = useRef();
 
+  // Copy email on click
   const copy = async () => {
     await navigator.clipboard.writeText('shplvk@gmail.com');
     setIsCopied(true);
@@ -49,11 +50,11 @@ export default function Home() {
     }
   })
 
-
+  // Scroll to works
   function handleScrolltoWorks() {
     worksRef.current.scrollIntoView({ behavior: 'smooth' })
   }
-
+  // Scroll to contacts
   function handleScrolltoContacts() {
     contactsRef.current.scrollIntoView({ behavior: 'smooth' })
   }
@@ -61,11 +62,11 @@ export default function Home() {
   return (
     <Page>
 
-      {/* <Video>
+      <Video>
         <video autoPlay loop muted style={video0}>
-          <source src={mount} type='video/mp4' />
+          <source src={video} type='video/mp4' />
         </video>
-      </Video> */}
+      </Video>
 
       <section>
         <Header>
@@ -124,13 +125,9 @@ export default function Home() {
           </ul>
         </HardSkills>
 
-        {/* <p style={{ gridArea: 'headsoft' }}>Soft skills</p> */}
-
-
         <SubHeaderLast style={{ gridArea: 'headprojects' }} ref={worksRef}><p>Pet-projects</p></SubHeaderLast>
 
         <div className="overflow" style={{ gridArea: 'o' }}>
-
           <DescriptionFirst style={{ gridArea: 'a' }}>
             <span>
               <p className="p-medium">Stopwatch + dynamic timeline + to-do list</p>
@@ -138,12 +135,7 @@ export default function Home() {
             </span>
             <p>customizable interfacem, custom hooks</p>
             <p style={{ marginTop: 'auto' }}>GitHub</p>
-
           </DescriptionFirst>
-
-          {/* <Project style={{ gridArea: 'c' }}>
-        <video autoPlay loop muted src={sky} type='video/mp4' />
-      </Project> */}
 
           <Description style={{ gridArea: 'b' }}>
             <span>
@@ -151,7 +143,7 @@ export default function Home() {
               <p>watch live</p>
             </span>
             <p>work with REST API using fetch API</p>
-            <a style={{ marginTop: 'auto' }} href="https://github.com/alexandrachuprina/basic-weather-app" target="_blank"><p>GitHub</p></a>
+            <a style={{ marginTop: 'auto' }} href="" target="_blank"><p>GitHub</p></a>
           </Description>
 
           <Description style={{ gridArea: 'b' }}>
@@ -160,7 +152,7 @@ export default function Home() {
               <p>watch live</p>
             </span>
             <p>work with REST API using React Query</p>
-            <a style={{ marginTop: 'auto' }} href="https://github.com/alexandrachuprina/react-query-app" target="_blank"><p>GitHub</p></a>
+            <a style={{ marginTop: 'auto' }} href="" target="_blank"><p>GitHub</p></a>
           </Description>
 
           <Description style={{ gridArea: 'b' }}>
@@ -177,8 +169,8 @@ export default function Home() {
               <p className="p-medium">Personal page (current)</p>
               <p>watch live</p>
             </span>
-            <p>work with video and React Router</p>
-            <p style={{ marginTop: 'auto' }}>GitHub</p>
+            <p>Redux, React Router</p>
+            <a style={{ marginTop: 'auto' }} href="" target="_blank"><p>GitHub</p></a>
           </Description>
 
         </div>
@@ -186,23 +178,20 @@ export default function Home() {
 
       <Footer>
         <AboutInFooter ref={contactsRef}>
-          {/* <p style={{ gridArea: 'video', paddingLeft: '2vw' }}>Video: <a href="https://www.pexels.com/@tobiasbjorkli/">Tobias Bjørkli</a></p>
+          <p style={{ gridArea: 'video', paddingLeft: '2vw' }}>Video: <a href="https://www.pexels.com/@tobiasbjorkli/">Tobias Bjørkli</a></p>
           <Intro style={{ gridArea: 'intro', display: 'flex', flexDirection: 'row' }}>
-            <BasicButton><Link to='cv'><h2>CV</h2></Link></BasicButton>
-            <BasicButton><a href="https://github.com/alexandrachuprina?tab=repositories" target='_blank'><h2>GitHub</h2></a></BasicButton>
-            <BasicButton><a href="https://t.me/alexandrachuprina" target='_blank'><h2>Telegram</h2></a></BasicButton>
-            <BasicButton onClick={copy}><h2>shplvk@gmail.com</h2></BasicButton>
+            <ContactsButton><Link to='cv'><h2>CV</h2></Link></ContactsButton>
+            <ContactsButton><a href="https://github.com/alexandrachuprina?tab=repositories" target='_blank'><h2>GitHub</h2></a></ContactsButton>
+            <ContactsButton><a href="https://t.me/alexandrachuprina" target='_blank'><h2>Telegram</h2></a></ContactsButton>
+            <ContactsButton onClick={copy}><h2>shplvk@gmail.com</h2></ContactsButton>
             {isCopied ? <Alert><p>Copied!</p></Alert> : null}
-          </Intro> */}
+          </Intro>
         </AboutInFooter>
       </Footer>
 
-
     </Page >
-
   )
 }
-
 
 const Page = styled.div`
   display: flex;
@@ -232,15 +221,15 @@ const Page = styled.div`
       font-size: 1rem;
     }
     p {
-      font-size: 0.6rem;
+      font-size: 0.5rem;
     }
   }
   @media (min-width: ${sizes.mini}) and (max-width: ${sizes.xxs}) {
     h2 {
-      font-size: 1.1rem;
+      font-size: 1rem;
     }
     p {
-      font-size: 0.7rem;
+      font-size: 0.6rem;
     }
   }
   @media (min-width: ${sizes.xxs}) and (max-width: ${sizes.xs}) {
@@ -333,28 +322,29 @@ const SubHeaderLast = styled(SubHeader)`
 const About = styled.div`
   display: grid;
   grid-template-columns: repeat(4, 25%) ;
-  padding: 22vw 2vw 2vw 2vw;
+  padding: 20vw 2vw 2vw 2vw;
   box-sizing: border-box;
   grid-template-areas:
     'video intro intro intro '
     '. soft soft soft'
     ;
-
-  /* margin-top: auto; */
 `
 const Intro = styled.div` 
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
   h2 {
     font-size: 4.2vh;
   }
 
   @media (min-width: ${sizes.smallest}) and (max-width: ${sizes.micro}) {
     h2 {
-      font-size: 1.4vh;
+      font-size: 1.2vh;
     }
   }
   @media (min-width: ${sizes.micro}) and (max-width: ${sizes.mini}) {
     h2 {
-      font-size: 1.6vh;
+      font-size: 1.4vh;
     }
   }
   @media (min-width: ${sizes.mini}) and (max-width: ${sizes.xxs}) {
@@ -440,6 +430,9 @@ const SoftSkills = styled.div`
       margin-bottom: 1vw;
     }
   }
+  li {
+    margin-bottom: 0.5vw;
+  }
   
 `
 const Grid = styled.div`
@@ -499,39 +492,5 @@ const AboutInFooter = styled(About)`
 const Footer = styled.div`
   height: 2vh;
 `
-const Project = styled.div`
-  position: relative;
-  height: 23vw;
-  border-top: 1px solid black;
-  border-left: 1px solid black;
 
-  video {
-    height: 100%;
-    width: 100%;
-    object-fit: cover;
-
-    opacity: 1;
-    z-index: -1;
-    /* filter: blur(5px); */
-  }
-
-  p {
-    padding: 0.5vw 0 0.5vw 2vw;
-  }
-  p:hover {
-    font-style: italic;
-  }
-  
-  &:hover {
-    p {
-      /* transition-property: margin-left;
-      transition-duration: 500ms;
-      margin-left: 3vw; */
-    }
-  }
-
-`
-const Contacts = styled.div`
-  height: 100vh;
-`
 
