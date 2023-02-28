@@ -1,7 +1,6 @@
 import React from "react";
 import { Routes, Route } from "react-router-dom";
 import Home from "./components/Home";
-import Layout from './components/Layout';
 import CV from './components/CV';
 
 function App() {

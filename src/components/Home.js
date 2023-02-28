@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { useState, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
-import styled, { keyframes } from "styled-components";
+import styled from "styled-components";
 import { BasicButton } from "../styles/buttons/BasicButton";
 import { ContactsButton } from '../styles/buttons/ContactsButton';
 import { selectSoftSkills, toggleElement, scrolltoElement } from "../features/toggleSlice";
@@ -21,11 +21,11 @@ export default function Home() {
 
   // Copy email on click
   const copy = async () => {
-    await navigator.clipboard.writeText('shplvk@gmail.com');
+    await navigator.clipboard.writeText('alexandra.chuprina.2000@gmail.com');
     setIsCopied(true);
     setTimeout(() => {
       setIsCopied(false);
-    }, 5000)
+    }, 2000)
   }
 
   // Background dynamic blur
@@ -119,7 +119,7 @@ export default function Home() {
           <ul>
             <li><p>JavaScript, TypeScript, React, Git</p></li>
             <li><p>Redux ToolKit, React Router, React Query</p></li>
-            <li><p>Styled Components, SCSS/ SASS</p></li>
+            <li><p>Styled Components, SCSS/ SASS, responsive design</p></li>
             <li><p>experience with REST API and Docker</p></li>
             <li><p>UX/ UI, Figma, Adobe Suit</p></li>
           </ul>
@@ -183,7 +183,7 @@ export default function Home() {
             <ContactsButton><Link to='cv'><h2>CV</h2></Link></ContactsButton>
             <ContactsButton><a href="https://github.com/alexandrachuprina?tab=repositories" target='_blank'><h2>GitHub</h2></a></ContactsButton>
             <ContactsButton><a href="https://t.me/alexandrachuprina" target='_blank'><h2>Telegram</h2></a></ContactsButton>
-            <ContactsButton onClick={copy}><h2>shplvk@gmail.com</h2></ContactsButton>
+            <ContactsButton onClick={copy}><h2>email</h2></ContactsButton>
             {isCopied ? <Alert><p>Copied!</p></Alert> : null}
           </Intro>
         </AboutInFooter>
@@ -267,9 +267,14 @@ const Page = styled.div`
 `
 const Video = styled.div`
   position: fixed;
+  height: 100vh;
   width: 100vw;
-  height: 100%;
   z-index: -1;
+
+  video {
+    height: 100%;
+    scale: 1.5;
+  }
 `
 const Alert = styled.div`
   height: 0.5vh;

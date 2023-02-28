@@ -13,17 +13,17 @@ export default function CV() {
           <p style={{ gridArea: 'name1' }}>Full name</p>
           <p style={{ gridArea: 'name2' }}>Alexandra Chuprina</p>
 
+          <p style={{ gridArea: 'contacts1' }}>Phone number</p>
+          <p style={{ gridArea: 'contacts2' }}>+7 951 00 56 658</p>
+
+          <p style={{ gridArea: 'email1' }}>Email</p>
+          <p style={{ gridArea: 'email2' }}>alexandra.chuprina.2000@gmail.com</p>
+
           <p style={{ gridArea: 'date1' }}>Date of birth</p>
           <p style={{ gridArea: 'date2' }}>17.10.2000</p>
 
           <p style={{ gridArea: 'timezone1' }}>Current timezone</p>
           <p style={{ gridArea: 'timezone2' }}>GMT+3, Moscow</p>
-
-          <p style={{ gridArea: 'edu1' }}>Education</p>
-          <div style={{ gridArea: 'edu2', display: 'flex', flexDirection: 'column' }}>
-            <p>Kazan State University of Architecture and Engineering</p>
-            <p>2018 — current time (academic leave)</p>
-          </div>
 
           <p style={{ gridArea: 'lang1' }}>Languages</p>
           <div style={{ gridArea: 'lang2', display: 'flex', flexDirection: 'column' }}>
@@ -32,6 +32,36 @@ export default function CV() {
           </div>
         </Info>
       </section>
+
+      <Irrelevant>
+        <p style={{ gridArea: 'edu1' }}>Education</p>
+        <div style={{ gridArea: 'edu2', display: 'flex', flexDirection: 'column' }}>
+          <p>Kazan State University of Architecture and Engineering</p>
+          <p>2018 — current time (academic leave)</p>
+        </div>
+
+        <p style={{ gridArea: 'work1' }}>Work experience</p>
+        <div style={{ gridArea: 'work5', display: 'flex', flexDirection: 'column' }}>
+          <p>Web designer, 2022-2023</p>
+          <p>freelance</p>
+        </div>
+        <div style={{ gridArea: 'work4-1', display: 'flex', flexDirection: 'column' }}>
+          <a href="https://t.me/svyaz_io"><p>svyaz.io, 2021-2023</p></a>
+          <p>graphic designer</p>
+        </div>
+        <div style={{ gridArea: 'work4', display: 'flex', flexDirection: 'column' }}>
+          <p>Graphic designer, 2021-2023</p>
+          <p>freelance</p>
+        </div>
+        <div style={{ gridArea: 'work3', display: 'flex', flexDirection: 'column' }}>
+          <p>AB Zarf, february 2022</p>
+          <p>architect</p>
+        </div>
+        <div style={{ gridArea: 'work2', display: 'flex', flexDirection: 'column' }}>
+          <a href="https://ostarch.ru/main/buro/istorija"><p>AB Ostozhenka, summer 2021</p></a>
+          <p>trainee</p>
+        </div>
+      </Irrelevant>
 
     </Page>
   )
@@ -42,6 +72,9 @@ const Page = styled.div`
     display: flex;
     flex-direction: column;
     height: 100vh;
+  }
+  a:hover {
+    text-decoration-color: grey;
   }
 `
 const Header = styled.div`
@@ -65,12 +98,33 @@ const Info = styled.div`
   box-sizing: border-box;
   grid-template-areas:
     'name1 name2 name2 name2'
+    'contacts1 contacts2 contacts2 contacts2'
+    'email1 email2 email2 email2'
     'date1 date2 date2 date2'
     'timezone1 timezone2 timezone2 timezone2'
-    'edu1 edu2 edu2 edu2'
     'lang1 lang2 lang2 lang2'
     ;
 
   padding-bottom: 2vw;
   margin-top: auto;
+`
+const Irrelevant = styled.div`
+  display: grid;
+  grid-template-columns: repeat(4, 25%);
+  row-gap: 1vw;
+  padding: 0vw 2vw 0 2vw;
+  box-sizing: border-box;
+  grid-template-areas:
+  'edu1 edu2 edu2 edu2'
+  'work1 work5 work5 work5'
+  '. work4-1 work4-1 work4-1'
+  '. work4 work4 work4'
+  '. work3 work3 work3'
+  '. work2 work2 work2'
+    ;
+
+  padding-bottom: 2vw;
+  p {
+    color: grey;
+  }
 `
