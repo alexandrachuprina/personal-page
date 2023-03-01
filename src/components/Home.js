@@ -1,23 +1,19 @@
 import React from 'react';
 import { Link } from "react-router-dom";
 import { useState, useRef } from "react";
-import { useDispatch, useSelector } from "react-redux";
 
 import styled from "styled-components";
 import { BasicButton } from "../styles/buttons/BasicButton";
 import { ContactsButton } from '../styles/buttons/ContactsButton';
-import { selectSoftSkills, toggleElement, scrolltoElement } from "../features/toggleSlice";
 import { sizes } from '../styles/abstracts/breakpoints';
 
 import video from '../app/data/background.mp4';
 import { softSkills } from '../app/data/softSkills';
 
 export default function Home() {
-  // const dispatch = useDispatch();
-  // const softSkills = useSelector(selectSoftSkills);
   const [scroll, setScroll] = useState(true);
   const [isCopied, setIsCopied] = useState(false);
-  const [text, setText] = useState('nope')
+  const [text, setText] = useState('')
   const worksRef = useRef();
   const contactsRef = useRef();
 
@@ -143,7 +139,7 @@ export default function Home() {
           <Description style={{ gridArea: 'b' }}>
             <span>
               <p className="p-medium">Weather broadcast</p>
-              <p>watch live</p>
+              {/* <p>watch live</p> */}
             </span>
             <p>work with REST API using fetch API</p>
             <a style={{ marginTop: 'auto' }} href="https://github.com/alexandrachuprina/basic-weather-app" target="_blank"><p>GitHub</p></a>
@@ -152,7 +148,7 @@ export default function Home() {
           <Description style={{ gridArea: 'b' }}>
             <span>
               <p className="p-medium">News getter</p>
-              <p>watch live</p>
+              {/* <p>watch live</p> */}
             </span>
             <p>work with REST API using React Query</p>
             <a style={{ marginTop: 'auto' }} href="https://github.com/alexandrachuprina/react-query-app" target="_blank"><p>GitHub</p></a>
@@ -161,7 +157,7 @@ export default function Home() {
           <Description style={{ gridArea: 'b' }}>
             <span>
               <p className="p-medium">Sign up form</p>
-              <p>watch live</p>
+              {/* <p>watch live</p> */}
             </span>
             <p>validation with RegEx</p>
             <a style={{ marginTop: 'auto' }} href="https://github.com/alexandrachuprina/login-app" target="_blank"><p>GitHub</p></a>
@@ -170,7 +166,7 @@ export default function Home() {
           <Description style={{ gridArea: 'b' }}>
             <span>
               <p className="p-medium">Personal page</p>
-              <p>watch live</p>
+              {/* <p>watch live</p> */}
             </span>
             <p>Redux, React Router</p>
             <a style={{ marginTop: 'auto' }} href="https://github.com/alexandrachuprina/personal-page" target="_blank"><p>GitHub</p></a>
