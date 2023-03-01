@@ -22,20 +22,20 @@ export default function Home() {
 
   window.addEventListener("load", (event) => {
     console.log("page is fully loaded");
-      // const id = Math.floor(Math.random() * 7) + 1
-      const toggledElement = skills.find(elem => elem.id === 0);
-      setText(toggledElement.fullText);
+    // const id = Math.floor(Math.random() * 7) + 1
+    const toggledElement = skills.find(elem => elem.id === 0);
+    setText(toggledElement.fullText);
   });
 
   // To set text
   function handleSetText(id) {
-      const toggledElement = skills.find(elem => elem.id === id);
-      const prevElement = skills.find(elem => elem.id === prevId);
-      console.log(prevElement)
-      prevElement.toggle = !prevElement.toggle;
-      toggledElement.toggle = !toggledElement.toggle;
-      setText(toggledElement.fullText);
-      setPrevId(id);
+    const toggledElement = skills.find(elem => elem.id === id);
+    const prevElement = skills.find(elem => elem.id === prevId);
+    console.log(prevElement)
+    prevElement.toggle = !prevElement.toggle;
+    toggledElement.toggle = !toggledElement.toggle;
+    setText(toggledElement.fullText);
+    setPrevId(id);
   }
 
   // Copy email on click
@@ -227,6 +227,7 @@ const Page = styled.div`
     margin-bottom: 1vh;
   }
 
+  /* phone  */
   @media (min-width: ${sizes.smallest}) and (max-width: ${sizes.micro}) {
     h2 {
       font-size: 0.9rem;
@@ -260,6 +261,7 @@ const Page = styled.div`
       height: 50vh;
     }
   }
+  /* tablet  */
   @media (min-width: ${sizes.xxs}) and (max-width: ${sizes.xs}) {
     h2 {
       font-size: 1.2rem;
@@ -383,6 +385,7 @@ const Intro = styled.div`
     margin-bottom: 1vw;
   }
 
+  /* phone  */
   @media (min-width: ${sizes.smallest}) and (max-width: ${sizes.micro}) {
     h2 {
       font-size: 1.2vh;
@@ -403,14 +406,15 @@ const Intro = styled.div`
       font-size: 2.4vh;
     }
   }
+  /* tablet  */
   @media (min-width: ${sizes.xs}) and (max-width: ${sizes.s}) {
     h2 {
-      font-size: 3.2vh;
+      font-size: 3vh;
     }
   }
   @media (min-width: ${sizes.s}) and (max-width: ${sizes.m}) {
     h2 {
-      font-size: 4vh;
+      font-size: 3vh;
     }
   }
 `
@@ -430,19 +434,11 @@ const HardSkills = styled.div`
   li {
     margin-bottom: 1vw;
   }
-
-  @media (min-width: ${sizes.smallest}) and (max-width: ${sizes.micro}) {
+  /* phone  */
+  @media (min-width: ${sizes.smallest}) and (max-width: ${sizes.xs}) {
     height: 25vw;
   }
-  @media (min-width: ${sizes.micro}) and (max-width: ${sizes.mini}) {
-    height: 25vw;
-  }
-  @media (min-width: ${sizes.mini}) and (max-width: ${sizes.xxs}) {
-    height: 25vw;
-  }
-  @media (min-width: ${sizes.xxs}) and (max-width: ${sizes.xs}) {
-    height: 25vw;
-  }
+  /* tablet  */
   @media (min-width: ${sizes.xs}) and (max-width: ${sizes.s}) {
     height: 25vw;
   }
@@ -460,7 +456,6 @@ const SoftSkills = styled.div`
   border-bottom: 1px solid black;
   border-left: 1px solid black;
   height: 25vh;
-
   span {
     p {
       margin-bottom: 1vw;
@@ -478,6 +473,21 @@ const SoftSkills = styled.div`
   li {
     margin-bottom: 0.5vw;
   }
+
+  /* phone  */
+  @media (min-width: ${sizes.smallest}) and (max-width: ${sizes.xs}) {
+  height: 25vw;
+  }
+  /* tablet  */
+  @media (min-width: ${sizes.xs}) and (max-width: ${sizes.s}) {
+    height: 25vw;
+  }
+  @media (min-width: ${sizes.s}) and (max-width: ${sizes.m}) {
+    height: 25vw;
+  }
+  @media (min-width: ${sizes.m}) and (max-width: ${sizes.l}) {
+    height: 25vw;
+  }
 `
 const Text = styled.div`
   margin-top: auto;
@@ -486,7 +496,6 @@ const WorksGallery = styled.div`
   display: grid;
   grid-template-columns: repeat(4, 25%);
   margin: 2vw;
-  /* box-sizing: border-box; */
   grid-template-areas:
     'headhard hard hard hard'
     'headsoft soft soft soft'
@@ -496,13 +505,6 @@ const WorksGallery = styled.div`
   border-left: 1px solid black;
   border-right: 1px solid black;
   border-bottom: 1px solid black;
-
-  /* .overflow {
-    width: 100%;
-    height: 46vw;
-    overflow-y: scroll;
-    z-index: 2;
-  } */
 `
 const Description = styled.div`
   display: flex;
