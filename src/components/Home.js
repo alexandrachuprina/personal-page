@@ -130,7 +130,7 @@ export default function Home() {
           <DescriptionFirst style={{ gridArea: 'a' }}>
             <span>
               <p className="p-medium">Stopwatch + dynamic timeline + to-do list</p>
-              <p>watch live</p>
+              {/* <p>watch live</p> */}
             </span>
             <p>customizable interfacem, custom hooks</p>
             <a style={{ marginTop: 'auto' }} href="https://github.com/alexandrachuprina/timer-app" target="_blank"><p>GitHub</p></a>
