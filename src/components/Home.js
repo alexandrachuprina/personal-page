@@ -214,6 +214,9 @@ const Page = styled.div`
     p {
       font-size: 0.4rem;
     }
+    section {
+      height: 50vw;
+    }
   }
   @media (min-width: ${sizes.micro}) and (max-width: ${sizes.mini}) {
     h2 {
@@ -221,6 +224,9 @@ const Page = styled.div`
     }
     p {
       font-size: 0.5rem;
+    }
+    section {
+      height: 50vw;
     }
   }
   @media (min-width: ${sizes.mini}) and (max-width: ${sizes.xxs}) {
@@ -230,6 +236,9 @@ const Page = styled.div`
     p {
       font-size: 0.6rem;
     }
+    section {
+      height: 50vw;
+    }
   }
   @media (min-width: ${sizes.xxs}) and (max-width: ${sizes.xs}) {
     h2 {
@@ -237,6 +246,9 @@ const Page = styled.div`
     }
     p {
       font-size: 0.8rem;
+    }
+    section {
+      height: 50vw;
     }
   }
   @media (min-width: ${sizes.xs}) and (max-width: ${sizes.s}) {
@@ -246,6 +258,9 @@ const Page = styled.div`
     p {
       font-size: 1rem;
     }
+    section {
+      height: 50vw;
+    }
   }
   @media (min-width: ${sizes.s}) and (max-width: ${sizes.m}) {
     h2 {
@@ -253,6 +268,9 @@ const Page = styled.div`
     }
     p {
       font-size: 1.3rem;
+    }
+    section {
+      height: 50vw;
     }
   }
   @media (min-width: ${sizes.m}) and (max-width: ${sizes.l}) {
