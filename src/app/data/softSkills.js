@@ -4,7 +4,7 @@ export const softSkills = [
     shortText: 'problem solving',
     fullText: `I am a good problem solver because I can analyze all aspects of a problem and identify its core. 
     I also learn from professionals about the solution to the same issues.`,
-    toggle: false,
+    toggle: true,
     ref: `ref0`,
   },
   {

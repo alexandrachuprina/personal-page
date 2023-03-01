@@ -1,10 +1,11 @@
 import React from 'react';
 import { Link } from "react-router-dom";
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef } from "react";
 
 import styled from "styled-components";
 import { BasicButton } from "../styles/buttons/BasicButton";
 import { ContactsButton } from '../styles/buttons/ContactsButton';
+import { BlackButton } from '../styles/buttons/BlackButton';
 import { sizes } from '../styles/abstracts/breakpoints';
 
 import video from '../app/data/background.mp4';
@@ -13,15 +14,28 @@ import { softSkills } from '../app/data/softSkills';
 export default function Home() {
   const [scroll, setScroll] = useState(true);
   const [isCopied, setIsCopied] = useState(false);
+  const [skills, setSkills] = useState(softSkills);
+  const [prevId, setPrevId] = useState(0);
   const [text, setText] = useState('')
   const worksRef = useRef();
   const contactsRef = useRef();
 
+  window.addEventListener("load", (event) => {
+    console.log("page is fully loaded");
+      // const id = Math.floor(Math.random() * 7) + 1
+      const toggledElement = skills.find(elem => elem.id === 0);
+      setText(toggledElement.fullText);
+  });
 
   // To set text
   function handleSetText(id) {
-    const toggledElement = softSkills.find(elem => elem.id === id);
-    setText(toggledElement.fullText)
+      const toggledElement = skills.find(elem => elem.id === id);
+      const prevElement = skills.find(elem => elem.id === prevId);
+      console.log(prevElement)
+      prevElement.toggle = !prevElement.toggle;
+      toggledElement.toggle = !toggledElement.toggle;
+      setText(toggledElement.fullText);
+      setPrevId(id);
   }
 
   // Copy email on click
@@ -113,11 +127,17 @@ export default function Home() {
 
         <SoftSkills style={{ gridArea: 'soft' }}>
           <ul>
-            {softSkills.map(elem => (
+            {skills.map(elem => (
               <li
                 key={elem.id}
               >
-                <BasicButton onClick={() => handleSetText(elem.id)}><p>{elem.shortText}</p></BasicButton>
+                {elem.toggle ? <BlackButton onClick={() => handleSetText(elem.id)}><p>{elem.shortText}</p></BlackButton>
+                  :
+                  <>
+                    <BasicButton onClick={() => handleSetText(elem.id)}><p>{elem.shortText}</p></BasicButton>
+                    {/* <BlackButton onClick={() => handleSetText(elem.id)}><p>{elem.shortText}</p></BlackButton> */}
+                  </>
+                }
               </li>
             ))}
           </ul>
@@ -410,11 +430,6 @@ const HardSkills = styled.div`
   li {
     margin-bottom: 1vw;
   }
-  :hover {
-    p {
-      font-style: italic;
-    }
-  }
 
   @media (min-width: ${sizes.smallest}) and (max-width: ${sizes.micro}) {
     height: 25vw;
@@ -505,11 +520,7 @@ const Description = styled.div`
     flex-direction: row;
     justify-content: space-between;
   }
-  :hover {
-    p {
-      font-style: italic;
-    }
-  }
+
 `
 const DescriptionFirst = styled(Description)`
   border-top: none;
