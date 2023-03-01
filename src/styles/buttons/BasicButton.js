@@ -26,6 +26,7 @@ export const BasicButton = styled.button`
     background-color: black;
     h2 {
       color: white;
+      margin-bottom: 0;
     }
     p {
       color: white;
