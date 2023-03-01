@@ -38,19 +38,34 @@ export const ContactsButton = styled.button`
   @media (min-width: ${sizes.smallest}) and (max-width: ${sizes.xxs}) {
     height: 4vw;
     border: 1px solid black;
+    h2 {
+    margin-bottom: 0;
+  }
   }
   @media (min-width: ${sizes.xxs}) and (max-width: ${sizes.xs}) {
     height: 4vw;
     border: 1px solid black;
+    h2 {
+    margin-bottom: 0;
+  }
   }
   @media (min-width: ${sizes.xs}) and (max-width: ${sizes.s}) {
     height: 4vw;
     border: 1px solid black;
+    h2 {
+    margin-bottom: 0;
+  }
   }
   @media (min-width: ${sizes.s}) and (max-width: ${sizes.m}) {
     height: 4vw;
+    h2 {
+    margin-bottom: 0;
+  }
   }
   @media (min-width: ${sizes.m}) and (max-width: ${sizes.l}) {
     height: 4vw;
+    h2 {
+    margin-bottom: 0;
+  }
   }
 `

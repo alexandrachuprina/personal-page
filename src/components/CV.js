@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { sizes } from '../styles/abstracts/breakpoints';
 
 export default function CV() {
   return (
@@ -75,6 +76,81 @@ const Page = styled.div`
   }
   a:hover {
     text-decoration-color: grey;
+  }
+
+  @media (min-width: ${sizes.smallest}) and (max-width: ${sizes.micro}) {
+    h2 {
+      font-size: 0.9rem;
+    }
+    p {
+      font-size: 0.4rem;
+    }
+    section {
+      height: 50vw;
+    }
+  }
+  @media (min-width: ${sizes.micro}) and (max-width: ${sizes.mini}) {
+    h2 {
+      font-size: 1rem;
+    }
+    p {
+      font-size: 0.5rem;
+    }
+    section {
+      height: 50vw;
+    }
+  }
+  @media (min-width: ${sizes.mini}) and (max-width: ${sizes.xxs}) {
+    h2 {
+      font-size: 1rem;
+    }
+    p {
+      font-size: 0.6rem;
+    }
+    section {
+      height: 50vw;
+    }
+  }
+  @media (min-width: ${sizes.xxs}) and (max-width: ${sizes.xs}) {
+    h2 {
+      font-size: 1.2rem;
+    }
+    p {
+      font-size: 0.8rem;
+    }
+    section {
+      height: 50vw;
+    }
+  }
+  @media (min-width: ${sizes.xs}) and (max-width: ${sizes.s}) {
+    h2 {
+      font-size: 1.5rem;
+    }
+    p {
+      font-size: 1rem;
+    }
+    section {
+      height: 50vw;
+    }
+  }
+  @media (min-width: ${sizes.s}) and (max-width: ${sizes.m}) {
+    h2 {
+      font-size: 1.8rem;
+    }
+    p {
+      font-size: 1.3rem;
+    }
+    section {
+      height: 50vw;
+    }
+  }
+  @media (min-width: ${sizes.m}) and (max-width: ${sizes.l}) {
+    h2 {
+      font-size: 2rem;
+    }
+    p {
+      font-size: 1.5rem;
+    }
   }
 `
 const Header = styled.div`
