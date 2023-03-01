@@ -21,6 +21,9 @@ export const ContactsButton = styled.button`
   height: 4vw;
   padding: 1vw 1.5vw 1vw 1.5vw;
   margin: 0 1vw 1vw 0;
+  h2 {
+    margin-bottom: 0;
+  }
 
   :hover {
     background-color: black;

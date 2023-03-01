@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from "react-router-dom";
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 
 import styled from "styled-components";
 import { BasicButton } from "../styles/buttons/BasicButton";
@@ -16,6 +16,7 @@ export default function Home() {
   const [text, setText] = useState('')
   const worksRef = useRef();
   const contactsRef = useRef();
+
 
   // To set text
   function handleSetText(id) {
@@ -86,11 +87,10 @@ export default function Home() {
 
         <About style={back}>
           <Intro style={{ gridArea: 'intro' }}>
-            <h2>
-              Hello! My name is Sasha. After 4 years of experience in architecture and design
-              I decided to switch my career. I found web-developent as a perfect field for me.
-              It gives me opportunity both in logical processes and design.
-            </h2>
+            <h2>Hello! My name is Sasha.</h2>
+            <br />
+            <h2>After 4 years of experience in architecture and design, I decided to switch my career. </h2>
+            <h2>I found web-development as a perfect field for me. </h2>
           </Intro>
         </About>
 
@@ -121,7 +121,7 @@ export default function Home() {
               </li>
             ))}
           </ul>
-          <p>{text}</p>
+          <Text><p>{text}</p></Text>
         </SoftSkills>
 
         <SubHeaderLast style={{ gridArea: 'headprojects' }} ref={worksRef}><p>Pet-projects</p></SubHeaderLast>
@@ -347,20 +347,20 @@ const SubHeaderLast = styled(SubHeader)`
 const About = styled.div`
   display: grid;
   grid-template-columns: repeat(4, 25%) ;
-  padding: 2vw;
+  padding: 0 2vw  10vw 2vw;
   box-sizing: border-box;
   grid-template-areas:
     'video intro intro intro '
     ;
-
   margin-top: auto;
 `
 const Intro = styled.div` 
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   flex-wrap: wrap;
   h2 {
     font-size: 4.2vh;
+    margin-bottom: 1vw;
   }
 
   @media (min-width: ${sizes.smallest}) and (max-width: ${sizes.micro}) {
@@ -444,6 +444,8 @@ const SoftSkills = styled.div`
   padding: 2vw;
   border-bottom: 1px solid black;
   border-left: 1px solid black;
+  height: 25vh;
+
   span {
     p {
       margin-bottom: 1vw;
@@ -461,10 +463,9 @@ const SoftSkills = styled.div`
   li {
     margin-bottom: 0.5vw;
   }
-  
 `
 const Text = styled.div`
-  
+  margin-top: auto;
 `
 const WorksGallery = styled.div`
   display: grid;
